@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GrayQuest Fee Financing – Indus International School</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --deep: #0D0D0D;
+  --charcoal: #1A1A2E;
+  --navy: #12233E;
+  --navy-mid: #1E3558;
+  --gold: #B8973E;
+  --gold-light: #D4AF5A;
+  --gold-pale: #F0E6C8;
+  --gold-glow: rgba(184,151,62,0.15);
+  --cream: #FAF7F0;
+  --white: #FFFFFF;
+  --border: rgba(184,151,62,0.22);
+  --border-dim: rgba(184,151,62,0.12);
+  --text-muted: rgba(255,255,255,0.45);
+  --text-dim: #5A6B8A;
+  --radius: 14px;
+  --radius-lg: 22px;
+  --shadow: 0 6px 32px rgba(13,13,13,0.12);
+  --shadow-deep: 0 16px 60px rgba(13,13,13,0.20);
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Jost', sans-serif; background: var(--cream); color: var(--navy); min-height: 100vh; line-height: 1.65; }
+
+/* ─── TOPBAR ─── */
+.topbar {
+  background: var(--deep);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 48px;
+  position: sticky; top: 0; z-index: 100;
+  border-bottom: 1px solid rgba(184,151,62,0.3);
+}
+.topbar-left { display: flex; align-items: center; gap: 14px; }
+.topbar-logo {
+  width: 40px; height: 40px;
+  background: linear-gradient(145deg, var(--gold), var(--gold-light));
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif; font-weight: 700; font-size: 18px; color: var(--deep);
+  flex-shrink: 0;
+}
+.topbar-text-main { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 600; color: var(--white); letter-spacing: 0.2px; }
+.topbar-text-main span { color: var(--gold-light); }
+.topbar-sub { font-size: 10px; color: rgba(255,255,255,0.38); letter-spacing: 2px; text-transform: uppercase; margin-top: 1px; }
+.topbar-badge {
+  font-size: 10px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase;
+  padding: 5px 14px; border-radius: 100px;
+  background: rgba(184,151,62,0.12); border: 1px solid rgba(184,151,62,0.35); color: var(--gold-light);
+}
+@media(max-width:600px){ .topbar { padding: 14px 20px; } .topbar-badge { display: none; } }
+
+/* ─── HERO ─── */
+.hero {
+  background: var(--deep);
+  min-height: 400px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center;
+  padding: 80px 40px 72px;
+  position: relative; overflow: hidden;
+}
+.hero-noise {
+  position: absolute; inset: 0; opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.hero-orb1 { position: absolute; top: -100px; left: -100px; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(184,151,62,0.10) 0%, transparent 65%); pointer-events: none; }
+.hero-orb2 { position: absolute; bottom: -120px; right: -80px; width: 420px; height: 420px; border-radius: 50%; background: radial-gradient(circle, rgba(30,53,88,0.7) 0%, transparent 65%); pointer-events: none; }
+.hero-line { width: 56px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 0 auto 28px; }
+.hero-eyebrow {
+  display: inline-block;
+  font-size: 10px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 22px;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(38px, 6vw, 68px);
+  font-weight: 700; line-height: 1.08; letter-spacing: -0.5px;
+  color: var(--white);
+  margin-bottom: 10px;
+}
+.hero h1 em { font-style: italic; color: var(--gold-light); }
+.hero h2 { font-size: clamp(14px, 2vw, 17px); font-weight: 300; color: rgba(255,255,255,0.5); letter-spacing: 1px; margin-bottom: 36px; }
+.hero-divider { width: 1px; height: 36px; background: linear-gradient(180deg, transparent, rgba(184,151,62,0.5), transparent); margin: 0 auto; }
+
+/* ─── CAMPUS SELECTOR ─── */
+.campus-selector-wrap {
+  background: var(--deep);
+  border-bottom: 1px solid rgba(184,151,62,0.18);
+  padding: 28px 48px;
+  display: flex; flex-direction: column; align-items: center; gap: 16px;
+  animation: fadeUp 0.4s ease both;
+}
+.campus-selector-label { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,0.38); }
+.campus-tabs { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+.campus-tab {
+  font-family: 'Jost', sans-serif; font-size: 13px; font-weight: 600;
+  letter-spacing: 0.8px;
+  padding: 10px 26px; border-radius: 100px;
+  border: 1.5px solid rgba(184,151,62,0.28);
+  background: rgba(255,255,255,0.03); color: rgba(255,255,255,0.55);
+  cursor: pointer; transition: all 0.22s; white-space: nowrap;
+}
+.campus-tab:hover { border-color: rgba(184,151,62,0.6); color: var(--gold-light); }
+.campus-tab.active {
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  border-color: transparent; color: var(--deep);
+  box-shadow: 0 4px 18px rgba(184,151,62,0.35);
+}
+@media(max-width:600px){ .campus-selector-wrap { padding: 22px 20px; } }
+
+/* ─── LAYOUT ─── */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 36px; }
+@media(max-width:600px){ .container { padding: 0 18px; } }
+.section-eyebrow { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 10px; }
+.section-title { font-family: 'Playfair Display', serif; font-size: clamp(26px, 3.5vw, 40px); font-weight: 700; color: var(--navy); line-height: 1.18; margin-bottom: 38px; }
+.ornament { display: flex; align-items: center; gap: 12px; margin-bottom: 38px; }
+.ornament-line { flex: 1; height: 1px; background: linear-gradient(90deg, var(--border), transparent); }
+.ornament-diamond { width: 7px; height: 7px; background: var(--gold); transform: rotate(45deg); flex-shrink: 0; }
+.divider-full { height: 1px; background: linear-gradient(90deg, transparent, var(--border) 25%, var(--border) 75%, transparent); margin: 60px 0; }
+
+/* ─── FINANCING OPTIONS ─── */
+.options-section { padding: 72px 0 20px; animation: fadeUp 0.5s ease both; }
+.options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+@media(max-width:700px){ .options-grid { grid-template-columns: 1fr; } }
+
+.option-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(184,151,62,0.18);
+  padding: 36px 32px;
+  display: flex; flex-direction: column;
+  position: relative; overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform 0.22s, box-shadow 0.22s;
+}
+.option-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-deep); }
+.option-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold)); }
+.option-corner { position: absolute; top: 18px; right: 18px; width: 28px; height: 28px; opacity: 0.08; }
+.option-corner::before, .option-corner::after { content: ''; position: absolute; background: var(--gold); }
+.option-corner::before { top: 0; right: 0; width: 28px; height: 1px; }
+.option-corner::after { top: 0; right: 0; width: 1px; height: 28px; }
+
+.option-tag {
+  display: inline-block; font-size: 10px; font-weight: 700;
+  letter-spacing: 1.8px; text-transform: uppercase;
+  padding: 4px 14px; border-radius: 100px; margin-bottom: 18px; width: fit-content;
+}
+.tag-short { background: #EBF5E4; color: #2E6B10; }
+.tag-long  { background: #E5EFF9; color: #174F8F; }
+.option-icon {
+  width: 52px; height: 52px; border-radius: 14px;
+  background: linear-gradient(135deg, var(--gold-pale), #EAD98C33);
+  border: 1px solid rgba(184,151,62,0.22);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; margin-bottom: 20px;
+}
+.option-card h3 { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; color: var(--navy); margin-bottom: 12px; }
+.option-card p { font-size: 14px; color: var(--text-dim); line-height: 1.8; }
+.option-list { list-style: none; margin-top: 16px; display: flex; flex-direction: column; gap: 9px; flex: 1; }
+.option-list li { font-size: 13.5px; color: var(--text-dim); display: flex; gap: 10px; align-items: flex-start; }
+.option-list li::before { content: '◆'; color: var(--gold); font-size: 8px; margin-top: 4px; flex-shrink: 0; }
+.option-sep { height: 1px; background: var(--border); margin: 24px 0; }
+.option-btn-group { display: flex; flex-direction: column; gap: 10px; }
+.btn-guide {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'Jost', sans-serif; font-size: 13px; font-weight: 600;
+  color: var(--navy); background: var(--gold-pale);
+  border: 1px solid rgba(184,151,62,0.35);
+  padding: 12px 24px; border-radius: 9px; text-decoration: none;
+  transition: all 0.2s; width: fit-content;
+}
+.btn-guide:hover { background: var(--gold); color: var(--deep); border-color: var(--gold); }
+.btn-apply {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'Jost', sans-serif; font-size: 13px; font-weight: 600;
+  color: var(--white); background: var(--navy);
+  border: 1.5px solid var(--navy-mid);
+  padding: 12px 24px; border-radius: 9px; text-decoration: none;
+  transition: all 0.2s; width: fit-content;
+}
+.btn-apply:hover { background: var(--navy-mid); border-color: var(--gold); box-shadow: 0 4px 16px rgba(18,35,62,0.2); }
+.btn-callback {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'Jost', sans-serif; font-size: 13px; font-weight: 600;
+  color: var(--white); background: #185FA5;
+  border: 1.5px solid #185FA5;
+  padding: 12px 24px; border-radius: 9px; text-decoration: none;
+  transition: all 0.2s; width: fit-content;
+}
+.btn-callback:hover { background: #0C447C; border-color: #0C447C; }
+
+/* ─── EMI CALCULATOR ─── */
+.emi-section { padding: 12px 0 28px; animation: fadeUp 0.5s 0.1s ease both; }
+.emi-shell {
+  background: var(--charcoal);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(184,151,62,0.28);
+  overflow: hidden;
+  box-shadow: var(--shadow-deep);
+}
+.emi-header {
+  background: linear-gradient(100deg, var(--deep) 0%, #16213E 100%);
+  padding: 40px 48px 32px;
+  border-bottom: 1px solid rgba(184,151,62,0.18);
+  position: relative; overflow: hidden;
+}
+.emi-header::before { content: ''; position: absolute; top: -80px; right: -60px; width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, rgba(184,151,62,0.08) 0%, transparent 65%); pointer-events: none; }
+.emi-header .section-title { color: var(--white); margin-bottom: 8px; }
+.emi-header-sub { font-size: 13px; color: rgba(255,255,255,0.4); }
+
+.emi-selectors {
+  padding: 32px 48px 0;
+  display: grid; grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 20px; align-items: end;
+}
+@media(max-width:900px){ .emi-selectors { grid-template-columns: 1fr 1fr; padding: 24px 22px 0; } }
+@media(max-width:500px){ .emi-selectors { grid-template-columns: 1fr; } }
+.emi-header { padding: 40px 48px 32px; }
+@media(max-width:700px){ .emi-header { padding: 28px 22px 24px; } }
+
+.sel-group { display: flex; flex-direction: column; gap: 9px; }
+.sel-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.4); font-weight: 500; }
+.sel-control {
+  width: 100%; background: rgba(255,255,255,0.05);
+  border: 1.5px solid rgba(184,151,62,0.3);
+  border-radius: 10px; padding: 13px 16px;
+  font-family: 'Jost', sans-serif; font-size: 15px; font-weight: 500;
+  color: var(--white); outline: none; cursor: pointer;
+  transition: border-color 0.2s;
+  -webkit-appearance: none; appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='8' viewBox='0 0 14 8'%3E%3Cpath d='M1 1l6 6 6-6' stroke='%23B8973E' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 14px center;
+  padding-right: 38px;
+}
+.sel-control option { background: #1A1A2E; color: var(--white); }
+.sel-control:focus { border-color: var(--gold); background-color: rgba(184,151,62,0.07); }
+
+.fee-input-group { display: flex; flex-direction: column; gap: 9px; }
+.fee-input-group label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.4); font-weight: 500; }
+.fee-input-wrap { position: relative; display: flex; align-items: center; }
+.fee-symbol { position: absolute; left: 16px; font-size: 17px; font-weight: 600; color: var(--gold); pointer-events: none; }
+.fee-input {
+  width: 100%; background: rgba(255,255,255,0.05);
+  border: 1.5px solid rgba(184,151,62,0.3);
+  border-radius: 10px; padding: 13px 16px 13px 36px;
+  font-family: 'Jost', sans-serif; font-size: 20px; font-weight: 600;
+  color: var(--white); outline: none; transition: border-color 0.2s;
+}
+.fee-input::placeholder { color: rgba(255,255,255,0.2); font-size: 16px; font-weight: 400; }
+.fee-input:focus { border-color: var(--gold); background: rgba(184,151,62,0.07); }
+.fee-input::-webkit-outer-spin-button,
+.fee-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.fee-input[type=number] { -moz-appearance: textfield; }
+
+.emi-rate-info {
+  margin: 16px 48px 0;
+  padding: 14px 20px;
+  background: rgba(184,151,62,0.06);
+  border: 1px solid rgba(184,151,62,0.2);
+  border-radius: 10px;
+  font-size: 13px; color: rgba(255,255,255,0.55);
+  display: none;
+}
+.emi-rate-info.visible { display: block; }
+.emi-rate-info strong { color: var(--gold-light); }
+
+@media(max-width:700px){ .emi-rate-info { margin: 14px 22px 0; } }
+
+/* EMI RESULTS */
+.emi-results { display: none; padding: 28px 48px 40px; }
+.emi-results.visible { display: block; animation: fadeUp 0.35s ease both; }
+@media(max-width:700px){ .emi-results { padding: 22px 22px 32px; } }
+
+.emi-summary {
+  display: flex; gap: 0; flex-wrap: wrap;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(184,151,62,0.18);
+  border-radius: 12px; overflow: hidden;
+  margin-bottom: 28px;
+}
+.emi-sum-item { flex: 1; min-width: 120px; padding: 18px 22px; border-right: 1px solid rgba(184,151,62,0.14); }
+.emi-sum-item:last-child { border-right: none; }
+.emi-sum-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.38); margin-bottom: 5px; }
+.emi-sum-val { font-size: 20px; font-weight: 600; color: var(--white); }
+.emi-sum-val small { font-size: 11px; font-weight: 400; color: var(--gold); margin-left: 3px; }
+
+.plan-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; }
+
+.plan-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(184,151,62,0.18);
+  border-radius: 13px; padding: 22px 14px; text-align: center;
+  transition: all 0.22s;
+}
+.plan-card:hover { background: rgba(184,151,62,0.10); border-color: rgba(184,151,62,0.45); transform: translateY(-3px); }
+.plan-card.pop { border-color: var(--gold); background: rgba(184,151,62,0.12); position: relative; padding-top: 30px; }
+.plan-card.pop::before {
+  content: 'Popular'; position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+  background: var(--gold); color: var(--deep);
+  font-size: 9px; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase;
+  padding: 3px 12px; border-radius: 100px; white-space: nowrap;
+}
+.p-count { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 700; color: var(--white); line-height: 1; }
+.p-label { font-size: 10px; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px; }
+.p-monthly { font-size: 16px; font-weight: 700; color: var(--gold-light); margin-bottom: 1px; }
+.p-mlabel { font-size: 10px; color: rgba(255,255,255,0.38); margin-bottom: 10px; }
+.p-div { height: 1px; background: rgba(184,151,62,0.13); margin: 8px 0 10px; }
+.p-stat { font-size: 11px; color: rgba(255,255,255,0.4); margin-bottom: 3px; }
+.p-stat b { color: rgba(255,255,255,0.7); font-weight: 500; }
+.p-badge { display: inline-block; background: rgba(184,151,62,0.14); color: var(--gold-light); font-size: 10px; font-weight: 600; padding: 3px 10px; border-radius: 100px; margin-top: 8px; }
+
+.emi-note { font-size: 11.5px; color: rgba(255,255,255,0.28); margin-top: 20px; text-align: center; line-height: 1.7; }
+.emi-no-data { font-size: 14px; color: rgba(255,255,255,0.4); text-align: center; padding: 20px 0; }
+
+/* ─── HELPDESK ─── */
+.helpdesk-section {
+  background: var(--deep);
+  position: relative; overflow: hidden;
+  padding: 80px 0 88px; margin-top: 64px;
+  animation: fadeUp 0.5s 0.15s ease both;
+}
+.helpdesk-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 60% at 15% 50%, rgba(184,151,62,0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 80% at 85% 50%, rgba(30,53,88,0.6) 0%, transparent 70%);
+  pointer-events: none;
+}
+.helpdesk-section::after {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--gold) 30%, var(--gold-light) 50%, var(--gold) 70%, transparent 100%);
+}
+.helpdesk-inner {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+}
+.helpdesk-crown {
+  width: 56px; height: 56px;
+  background: linear-gradient(145deg, var(--gold), var(--gold-light));
+  border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px;
+  margin-bottom: 24px;
+  box-shadow: 0 8px 32px rgba(184,151,62,0.35), 0 2px 8px rgba(0,0,0,0.4);
+}
+.helpdesk-eyebrow {
+  font-size: 10px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold-light); margin-bottom: 12px;
+}
+.helpdesk-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 4vw, 44px); font-weight: 700;
+  color: var(--white); line-height: 1.15; margin-bottom: 10px;
+}
+.helpdesk-subtitle {
+  font-size: 14px; color: rgba(255,255,255,0.38); font-weight: 300;
+  letter-spacing: 0.5px; margin-bottom: 52px;
+}
+.helpdesk-ornament {
+  display: flex; align-items: center; gap: 14px; margin-bottom: 52px;
+}
+.helpdesk-ornament-line { width: 80px; height: 1px; background: linear-gradient(90deg, transparent, rgba(184,151,62,0.5)); }
+.helpdesk-ornament-line.rev { background: linear-gradient(90deg, rgba(184,151,62,0.5), transparent); }
+.helpdesk-ornament-diamond { width: 8px; height: 8px; background: var(--gold); transform: rotate(45deg); flex-shrink: 0; }
+
+.helpdesk-card-royal {
+  background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(184,151,62,0.04) 100%);
+  border: 1px solid rgba(184,151,62,0.28);
+  border-radius: 20px;
+  padding: 48px 56px;
+  max-width: 580px; width: 100%;
+  position: relative; overflow: hidden;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.4), inset 0 1px 0 rgba(184,151,62,0.15);
+}
+.helpdesk-card-royal::before {
+  content: '';
+  position: absolute; top: -40px; right: -40px;
+  width: 180px; height: 180px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(184,151,62,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.helpdesk-card-royal::after {
+  content: '';
+  position: absolute; top: 0; left: 32px; right: 32px; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(184,151,62,0.6), transparent);
+}
+.hd-contact-row {
+  display: flex; flex-direction: column; gap: 18px; margin-bottom: 28px;
+}
+.hd-contact-item {
+  display: flex; align-items: center; gap: 16px;
+}
+.hd-contact-icon-wrap {
+  width: 44px; height: 44px; flex-shrink: 0;
+  border-radius: 12px;
+  background: rgba(184,151,62,0.10);
+  border: 1px solid rgba(184,151,62,0.25);
+  display: flex; align-items: center; justify-content: center;
+}
+.hd-contact-icon-wrap svg { width: 18px; height: 18px; stroke: var(--gold-light); }
+.hd-contact-details { display: flex; flex-direction: column; gap: 2px; text-align: left; }
+.hd-contact-type { font-size: 10px; letter-spacing: 1.8px; text-transform: uppercase; color: rgba(255,255,255,0.32); font-weight: 500; }
+.hd-contact-value {
+  font-size: 16px; font-weight: 600; color: var(--white);
+  text-decoration: none; letter-spacing: 0.3px;
+  transition: color 0.18s;
+  display: block;
+}
+.hd-contact-value:hover { color: var(--gold-light); }
+.hd-contact-value.gold { color: var(--gold-light); }
+.hd-sep { height: 1px; background: linear-gradient(90deg, transparent, rgba(184,151,62,0.25), transparent); margin: 4px 0; }
+
+
+/* ─── FOOTER ─── */
+footer { background: var(--deep); text-align: center; padding: 24px 32px; font-size: 12px; color: rgba(255,255,255,0.3); letter-spacing: 0.5px; }
+footer span { color: var(--gold); }
+
+/* ─── HELP PILL ─── */
+.help-pill {
+  position: fixed; bottom: 28px; right: 28px;
+  background: var(--deep); color: var(--gold-light);
+  border: 1.5px solid rgba(184,151,62,0.5); border-radius: 100px;
+  padding: 11px 24px; font-size: 13px; font-weight: 600;
+  font-family: 'Jost', sans-serif;
+  display: flex; align-items: center; gap: 8px;
+  text-decoration: none; z-index: 50;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+  transition: all 0.22s;
+}
+.help-pill:hover { background: var(--gold); color: var(--deep); border-color: var(--gold); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(184,151,62,0.3); }
+
+/* ─── CAMPUS INDICATOR ─── */
+#campusIndicator {
+  display: none;
+  padding: 10px 48px;
+  background: rgba(184,151,62,0.06);
+  border-bottom: 1px solid rgba(184,151,62,0.12);
+  font-size: 12px; color: rgba(255,255,255,0.4);
+  letter-spacing: 0.5px;
+}
+#campusIndicator.visible { display: block; }
+@media(max-width:600px){ #campusIndicator { padding: 10px 20px; } }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <div class="topbar-left">
+    <div class="topbar-logo">GQ</div>
+    <div>
+      <div class="topbar-text-main"><span>GrayQuest</span> Fee Financing</div>
+      <div class="topbar-sub">Indus International Schools</div>
+    </div>
+  </div>
+  <div class="topbar-badge">Official Partner</div>
+</nav>
+
+<section class="hero">
+  <div class="hero-noise"></div>
+  <div class="hero-orb1"></div>
+  <div class="hero-orb2"></div>
+  <div class="hero-line"></div>
+  <div class="hero-eyebrow">Indus International School × GrayQuest</div>
+  <h1>GrayQuest <em>Fee Financing</em></h1>
+  <h2>Flexible Monthly Payment Option for School Fees</h2>
+  <div class="hero-divider"></div>
+</section>
+
+<!-- CAMPUS SELECTOR -->
+<div class="campus-selector-wrap">
+  <div class="campus-selector-label">Select Your Campus</div>
+  <div class="campus-tabs">
+    <button class="campus-tab active" data-campus="HYD" onclick="setCampus('HYD', this)">Hyderabad</button>
+    <button class="campus-tab" data-campus="BLR" onclick="setCampus('BLR', this)">Bangalore</button>
+    <button class="campus-tab" data-campus="Belgaum" onclick="setCampus('Belgaum', this)">Belgaum</button>
+    <button class="campus-tab" data-campus="Pune" onclick="setCampus('Pune', this)">Pune</button>
+  </div>
+</div>
+
+<main class="container">
+
+  <!-- FINANCING OPTIONS -->
+  <section class="options-section">
+    <div class="section-eyebrow">Financing Options</div>
+    <div class="section-title">Fee Financing for Indus School Parents</div>
+
+    <div class="option-card" style="max-width:680px;">
+      <div class="option-corner"></div>
+      <span class="option-tag tag-short">Monthly Payment Option</span>
+      <div class="option-icon">⚡</div>
+      <h3>Monthly Payment Option</h3>
+      <p>Flexible EMI option designed to split your annual fees into upto <strong>10 easy monthly instalments</strong> — completely hassle-free.</p>
+      <ul class="option-list">
+        <li>Split fee into manageable monthly payments</li>
+        <li>Applicable for <strong>Annual fees only</strong></li>
+        <li><strong>NO</strong> Paperwork &amp; <strong>NO</strong> Processing fee</li>
+        <li>Only <strong>1st month EMI</strong> as a down-payment</li>
+        <li>Quick <strong>5-min</strong> fully digital process</li>
+        <li>EMI interest will vary based on your <strong>board / cohort &amp; grade</strong></li>
+      </ul>
+      <div class="option-sep"></div>
+      <div class="option-btn-group" style="flex-direction:row; flex-wrap:wrap;">
+        <a class="btn-guide" href="https://drive.google.com/drive/folders/1mJ565xGXTpeYTk6tmOFg_Ctv9sd73pfd?usp=sharing" target="_blank" rel="noopener">
+          Open User Guide
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+        <a class="btn-apply" id="applyNowBtn" href="#" target="_blank" rel="noopener">
+          Apply Now
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </section>
+
+  <div class="divider-full"></div>
+
+  <!-- EMI CALCULATOR -->
+  <section class="emi-section" id="emi-calculator">
+    <div class="emi-shell">
+      <div class="emi-header">
+        <div class="section-eyebrow" style="color:var(--gold-light)">EMI Calculator</div>
+        <div class="section-title">Monthly Payment Option — EMI Estimator</div>
+        <div class="emi-header-sub">Select your campus, grade group &amp; enter fee amount to see all EMI plans</div>
+      </div>
+
+      <div class="emi-selectors">
+        <div class="sel-group">
+          <div class="sel-label">Campus</div>
+          <select class="sel-control" id="calcCampus" onchange="updateBoardOptions(); calcEMI();">
+            <option value="HYD">Hyderabad</option>
+            <option value="BLR">Bangalore</option>
+            <option value="Belgaum">Belgaum</option>
+            <option value="Pune">Pune</option>
+          </select>
+        </div>
+        <div class="sel-group">
+          <div class="sel-label">Board / Cohort</div>
+          <select class="sel-control" id="calcBoard" onchange="updateGradeOptions(); calcEMI();"></select>
+        </div>
+        <div class="sel-group">
+          <div class="sel-label">Grade</div>
+          <select class="sel-control" id="calcGrade" onchange="calcEMI();"></select>
+        </div>
+        <div class="sel-group">
+          <div class="fee-input-group">
+            <label class="sel-label">Annual Fee Amount</label>
+            <div class="fee-input-wrap">
+              <span class="fee-symbol">₹</span>
+              <input type="number" class="fee-input" id="feeInput" placeholder="e.g. 500000" min="0" oninput="calcEMI()" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="emi-rate-info" id="rateInfo"></div>
+
+      <div class="emi-results" id="emiResults">
+        <div class="emi-summary" id="summaryBar"></div>
+        <div class="plan-grid" id="planGrid"></div>
+        <p class="emi-note">* Interest rates are indicative. Final amounts subject to GrayQuest approval. All amounts in Indian Rupees (₹).</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- HELPDESK -->
+<section class="helpdesk-section">
+  <div class="container">
+    <div class="helpdesk-inner">
+      <div class="helpdesk-crown">📞</div>
+      <div class="helpdesk-eyebrow">Reach Us Anytime</div>
+      <div class="helpdesk-title">GrayQuest Helpdesk</div>
+      <div class="helpdesk-subtitle">Our team is here to assist you with all fee financing queries</div>
+      <div class="helpdesk-ornament">
+        <div class="helpdesk-ornament-line"></div>
+        <div class="helpdesk-ornament-diamond"></div>
+        <div class="helpdesk-ornament-line rev"></div>
+      </div>
+      <div class="helpdesk-card-royal">
+        <div class="hd-contact-row">
+          <div class="hd-contact-item">
+            <div class="hd-contact-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.61 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.69a16 16 0 0 0 5.68 5.68l.97-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div class="hd-contact-details">
+              <span class="hd-contact-type">Helpline Numbers</span>
+              <a href="tel:+918071714239" class="hd-contact-value gold">080-71714239</a>
+              <a href="tel:+918355879404" class="hd-contact-value gold">+91-83558 79404</a>
+            </div>
+          </div>
+          <div class="hd-sep"></div>
+          <div class="hd-contact-item">
+            <div class="hd-contact-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div class="hd-contact-details">
+              <span class="hd-contact-type">Email Support</span>
+              <a href="mailto:indus.support@grayquest.com" class="hd-contact-value">indus.support@grayquest.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Powered by <span>GrayQuest</span> &nbsp;·&nbsp; Indus International Schools
+</footer>
+
+<a class="help-pill" id="helpPill" href="mailto:indus.support@grayquest.com">
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+  Get Help
+</a>
+
+<script>
+// ── DATA  (Campus → Board → Grade → Rate) ────────────────────────────────────
+const RATE_DATA = {
+  HYD: {
+    "Joined for AY 2018-19 or before": {
+      "Grade 3": 3.75, "Grade 4": 3.75, "Grade 5": 3.75,
+      "Grade 6": 4.25, "Grade 7": 4.25, "Grade 8": 4.25,
+      "Grade 9": 4.75, "Grade 10": 4.75,
+      "Grade 11": 5.00, "Grade 12": 5.00,
+    },
+    "Joined for AY 2019-20 and after": {
+      "Nursery": 1.00, "Reception": 2.25,
+      "Preparatory 1": 3.00, "Preparatory 2": 3.00,
+      "Grade 1": 4.00, "Grade 2": 4.00, "Grade 3": 4.00,
+      "Grade 4": 4.00, "Grade 5": 4.00,
+      "Grade 6": 4.50, "Grade 7": 4.50, "Grade 8": 4.50,
+      "Grade 9": 5.00, "Grade 10": 5.00,
+      "Grade 11": 5.00, "Grade 12": 5.00,
+    },
+  },
+  BLR: {
+    "Day Scholar": {
+      "Nursery": 2.00, "Preparatory": 3.00,
+      "Grade 1": 4.10, "Grade 2": 4.10,
+      "Grade 3": 5.00, "Grade 4": 5.00, "Grade 5": 5.00,
+      "Grade 6": 4.50, "Grade 7": 4.50, "Grade 8": 4.50,
+      "Grade 9": 4.50, "Grade 10": 4.50,
+      "Grade 11": 4.75, "Grade 12": 4.75,
+    },
+    "Week Boarder": {
+      "Grade 3": 5.00, "Grade 4": 5.00, "Grade 5": 5.00,
+      "Grade 6": 5.00, "Grade 7": 5.00, "Grade 8": 5.00,
+      "Grade 9": 5.00, "Grade 10": 5.00,
+      "Grade 11": 5.00, "Grade 12": 5.00,
+    },
+    "Regular Boarder": {
+      "Grade 3": 5.25, "Grade 4": 5.25, "Grade 5": 5.25,
+      "Grade 6": 5.00, "Grade 7": 5.00, "Grade 8": 5.00,
+      "Grade 9": 5.00, "Grade 10": 5.00,
+      "Grade 11": 5.00, "Grade 12": 5.00,
+    },
+  },
+  Pune: {
+    "Day Scholar": {
+      "Preparatory": 3.00,
+      "Grade 1": 5.00, "Grade 2": 5.00, "Grade 3": 5.00,
+      "Grade 4": 5.00, "Grade 5": 5.00,
+      "Grade 6": 5.75, "Grade 7": 5.75, "Grade 8": 5.75,
+      "Grade 9": 6.00, "Grade 10": 6.00,
+      "Grade 11": 6.00, "Grade 12": 6.00,
+    },
+    "Week Boarder": {
+      "Grade 1": 5.50, "Grade 2": 5.50, "Grade 3": 5.50,
+      "Grade 4": 5.50, "Grade 5": 5.50,
+      "Grade 6": 6.00, "Grade 7": 6.00, "Grade 8": 6.00,
+      "Grade 9": 6.00, "Grade 10": 6.00,
+      "Grade 11": 6.00, "Grade 12": 6.00,
+    },
+    "Regular Boarder": {
+      "Grade 1": 5.50, "Grade 2": 5.50, "Grade 3": 5.50,
+      "Grade 4": 5.50, "Grade 5": 5.50,
+      "Grade 6": 6.00, "Grade 7": 6.00, "Grade 8": 6.00,
+      "Grade 9": 6.00, "Grade 10": 6.00,
+      "Grade 11": 6.00, "Grade 12": 6.00,
+    },
+  },
+  Belgaum: {
+    "Day Scholar": {
+      "Nursery": 0.00, "Reception": 0.00,
+      "Preparatory 1": 0.00, "Preparatory 2": 0.00,
+      "Grade 1": 1.00, "Grade 2": 1.00, "Grade 3": 1.00, "Grade 4": 1.00,
+      "Grade 5": 2.25, "Grade 6": 2.25, "Grade 7": 2.25, "Grade 8": 2.25,
+      "Grade 9": 3.25, "Grade 10": 3.25,
+      "Grade 11 (AS)": 4.00, "Grade 12": 4.00,
+    },
+    "Term Boarder": {
+      "Grade 1": 1.00, "Grade 2": 1.00, "Grade 3": 1.00, "Grade 4": 1.00,
+      "Grade 5": 2.25, "Grade 6": 2.25, "Grade 7": 2.25, "Grade 8": 2.25,
+      "Grade 9": 3.25, "Grade 10": 3.25,
+      "Grade 11 (AS)": 4.00, "Grade 12": 4.00,
+    },
+  },
+};
+
+const SUPPORT = {
+  HYD:     { phone: "+91-83558 79404", tel: "+918355879404" },
+  BLR:     { phone: "080-71714239",    tel: "+918071714239" },
+  Belgaum: { phone: "080-71714239",    tel: "+918071714239" },
+  Pune:    { phone: "080-71714239",    tel: "+918071714239" },
+};
+
+const APPLY_LINKS = {
+  HYD:     "https://rapid.grayquest.com/indus-master",
+  BLR:     "https://rapid.grayquest.com/indus-master",
+  Belgaum: "https://rapid.grayquest.com/indus-master",
+  Pune:    "https://rapid.grayquest.com/indus-master",
+};
+
+let currentCampus = 'HYD';
+
+function setCampus(campus, el) {
+  currentCampus = campus;
+  document.querySelectorAll('.campus-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('calcCampus').value = campus;
+  updateBoardOptions();
+  document.getElementById('applyNowBtn').href = APPLY_LINKS[campus] || '#';
+  calcEMI();
+}
+
+function updateBoardOptions() {
+  const campus = document.getElementById('calcCampus').value;
+  currentCampus = campus;
+  const boards = Object.keys(RATE_DATA[campus] || {});
+  const sel = document.getElementById('calcBoard');
+  sel.innerHTML = boards.map(b => `<option value="${b}">${b}</option>`).join('');
+  updateGradeOptions();
+  document.getElementById('applyNowBtn').href = APPLY_LINKS[campus] || '#';
+}
+
+function updateGradeOptions() {
+  const campus = document.getElementById('calcCampus').value;
+  const board  = document.getElementById('calcBoard').value;
+  const grades = Object.keys((RATE_DATA[campus] || {})[board] || {});
+  const sel = document.getElementById('calcGrade');
+  sel.innerHTML = grades.map(g => `<option value="${g}">${g}</option>`).join('');
+}
+
+function fmt(n) { return '₹' + Math.round(n).toLocaleString('en-IN'); }
+
+function calcEMI() {
+  const campus  = document.getElementById('calcCampus').value;
+  const board   = document.getElementById('calcBoard').value;
+  const grade   = document.getElementById('calcGrade').value;
+  const feeRaw  = parseFloat(document.getElementById('feeInput').value);
+
+  const results  = document.getElementById('emiResults');
+  const rateInfo = document.getElementById('rateInfo');
+
+  const rate = ((RATE_DATA[campus] || {})[board] || {})[grade];
+  if (rate === undefined) { results.classList.remove('visible'); rateInfo.classList.remove('visible'); return; }
+
+  const rateDisplay = rate === 0 ? '0% (No interest)' : rate.toFixed(2) + '%';
+  rateInfo.innerHTML = `<strong>${campus === 'HYD' ? board : board}</strong> &nbsp;·&nbsp; <strong>${grade}</strong> &nbsp;·&nbsp; Interest Rate: <strong>${rateDisplay}</strong> &nbsp;·&nbsp; EMIs: <strong>10 months</strong>`;
+  rateInfo.classList.add('visible');
+
+  const fee = (!feeRaw || feeRaw <= 0) ? null : feeRaw;
+  if (!fee) { results.classList.remove('visible'); return; }
+
+  results.classList.add('visible');
+
+  const interest = fee * (rate / 100);
+  const total    = fee + interest;
+  const monthly  = total / 10;
+  const dp       = monthly; // 1st EMI as down-payment
+
+  document.getElementById('summaryBar').innerHTML = `
+    <div class="emi-sum-item"><div class="emi-sum-label">Fee Amount</div><div class="emi-sum-val">${fmt(fee)}</div></div>
+    <div class="emi-sum-item"><div class="emi-sum-label">Total Interest</div><div class="emi-sum-val">${fmt(interest)}</div></div>
+    <div class="emi-sum-item"><div class="emi-sum-label">Total Payable</div><div class="emi-sum-val">${fmt(total)}</div></div>
+    <div class="emi-sum-item"><div class="emi-sum-label">Monthly EMI</div><div class="emi-sum-val">${fmt(monthly)} <small>/mo</small></div></div>
+  `;
+
+  document.getElementById('planGrid').innerHTML = `
+    <div class="plan-card pop" style="grid-column: 1 / -1; max-width: 320px; margin: 0 auto; width: 100%;">
+      <div class="p-count">10</div>
+      <div class="p-label">Monthly EMIs</div>
+      <div class="p-monthly">${fmt(monthly)}</div>
+      <div class="p-mlabel">per month</div>
+      <div class="p-div"></div>
+      <div class="p-stat">Down-Payment: <b>${fmt(dp)}</b></div>
+      <div class="p-stat">Total Interest: <b>${fmt(interest)}</b></div>
+      <div class="p-stat">Total Amount: <b>${fmt(total)}</b></div>
+      <div style="font-size:11px;color:rgba(255,255,255,0.3);margin-top:7px;">1st EMI as Down-Payment</div>
+      <div class="p-badge">${rate.toFixed(2)}% interest</div>
+    </div>
+  `;
+}
+
+// Init
+updateBoardOptions();
+document.getElementById('applyNowBtn').href = APPLY_LINKS['HYD'];
+</script>
+</body>
+</html>
